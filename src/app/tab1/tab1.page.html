@@ -1,17 +1,88 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-text class="title" slot="start">Queup Home</ion-text>
+      <ion-buttons slot="end">
+        <ion-button color="primary">
+          <ion-icon name="mail-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-content>
+    <ion-card class="mt-1">
+      <img
+        alt="Silhouette of mountains"
+        src="https://ionicframework.com/docs/img/demos/card-media.png"
+      />
+    </ion-card>
+
+    <div class="subtitle">
+      <ion-text color="primary"> Upcoming Bookings</ion-text>
+    </div>
+    <div>
+      <swiper-container
+        class="p-1"
+        slides-per-view="3"
+        speed="500"
+      >
+        <swiper-slide>
+          <ion-buttons>
+            <ion-button>All</ion-button>
+          </ion-buttons>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-buttons>
+            <ion-button>Appointments</ion-button>
+          </ion-buttons>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-buttons>
+            <ion-button>Deliveries</ion-button>
+          </ion-buttons>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-buttons>
+            <ion-button>Sports</ion-button>
+          </ion-buttons>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+
+    <ion-card class="p-1">
+      <ion-row>
+        <ion-col class="first-col">
+          <div class="subtext text-primary">01/11/2024</div>
+          <div class="subtext">12:00 - 1:00 P.M</div>
+        </ion-col>
+        <ion-col>
+          <div class="subtext">Organisation</div>
+          <div>Moh Health Screening Center</div>
+          <div class="subtext">Service</div>
+          <div>Foreign Worker Health Screening</div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-button id="open-modal1" expand="block"> Open Modal </ion-button>
+
+    <ion-modal
+      #modal
+      trigger="open-modal1"
+      [initialBreakpoint]="0.5"
+      [breakpoints]="[0, 0.25, 0.5, 0.75, 1]"
+    >
+      <ng-template>
+        <ion-row>
+          <ion-col>
+            <div>{{ modal_name ? modal_name : "modal_open" }}</div>
+          </ion-col>
+          <ion-col class="text-end">
+            <ion-text (click)="modal.dismiss()" color="primary">close</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-content> modal opened </ion-content>
+      </ng-template>
+    </ion-modal>
+  </ion-content>
 </ion-content>
